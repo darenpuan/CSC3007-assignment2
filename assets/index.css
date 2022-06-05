@@ -1,0 +1,13 @@
+body {
+  background-color: #fefefe;
+}
+.main {
+  margin: 20px auto;
+  
+}
+.chart{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: min-content;
+}

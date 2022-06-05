@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body></body>
+  <script>
+    const url =
+      "https://data.gov.sg/api/action/datastore_search?resource_id=83c21090-bd19-4b54-ab6b-d999c251edcf";
+    d3.json(url)
+      .then((res) => {
+        var records = res.result.records;
+        console.log(records)
+
+        var groupByYear={}
+        for (var key in records){
+          var year = records[key].year;
+          if(!groupByYear[year]){
+            groupByYear[year]=[];
+          }
+          groupByYear[year].push(records[key]);
+        }
+        console.log(groupByYear)
+
+        var groupByCrime = {};
+
+        for (var key in records) {
+          var crime = records[key].level_2;
+          if (!groupByCrime[crime]) {
+            groupByCrime[crime] = [];
+          }
+          groupByCrime[crime].push(records[key]);
+        }
+        console.log(groupByCrime);
+      })
+      .catch(() => {
+        alert("Oh no, something horrible happened!");
+      });
+  </script>
+</html>
