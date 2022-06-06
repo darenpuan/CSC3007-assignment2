@@ -26,13 +26,16 @@
       </div>
     </nav>
     <section class="main">
-      <div class="container chart">
+      <div class="chart card">
         <div class="">
           <label for="year">Please Select a Year: </label>
-          <select name="year" id="ddlYear"></select>
+          <select name="year" id="ddlYear" class="form-select"></select>
         </div>
-        <div id="hoverDetails"></div>
+
         <div class="overflow-auto" id="graph"></div>
+        <div class="hoverContainer">
+          <div id="hoverDetails"></div>
+        </div>
       </div>
     </section>
     <div class="container footerContainer">
@@ -114,16 +117,16 @@
           .scaleOrdinal()
           .domain(year)
           .range([
-            "#ae7d78",
-            "#f4a582",
-            "#f9b4ab",
-            "#d5d5d5",
-            "#92c5de",
-            "#377eb8",
-            "#0571b0",
-            "#264e70",
-            "#679186",
-            "#bbd4ce",
+            "#8ef6c6",
+            "#8fe9a7",
+            "#95db87",
+            "#9fcc69",
+            "#aabc4c",
+            "#b5aa34",
+            "#c09721",
+            "#ca8119",
+            "#d1691e",
+            "#d74e2a",
           ]);
         // create a tooltip
         var Tooltip = d3
@@ -136,8 +139,11 @@
           .style("border-width", "2px")
           .style("border-radius", "5px")
           .style("font-size", "20px")
-     
+          .style("margin", "auto")
+          .style("width", "max-content")
+          .style("position", "relative")
           .style("padding", "5px 10px")
+          .style("text-align", "center")
           .html("Hover on a bar for more details");
 
         // Three function that change the tooltip when user hover / move / leave a cell
@@ -146,11 +152,11 @@
           d3.select(this).style("stroke", "black").style("opacity", 1);
         };
         var mousemove = function (Event, d) {
-          Tooltip.html(d.level_2 + " : " + d.value)
+          Tooltip.html(d.level_2 + " : " + d.value);
         };
         var mouseleave = function (d) {
           Tooltip.style("opacity", 1);
-          Tooltip.html("Hover on a bar for more details")
+          Tooltip.html("Hover on a bar for more details");
 
           d3.select(this).style("stroke", "none").style("opacity", 0.8);
         };

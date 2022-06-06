@@ -9,5 +9,23 @@ body {
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: min-content;
+    width: fit-content;
+    padding: 20px;
+    box-shadow: 8px 8px #f0f0f0;
+}
+label{
+  font-weight: 600;
+  font-size: 1.3em;
+  margin-bottom: 8px;
+}
+
+.form-select{
+  display: unset;
+  width: 40%;
+}
+
+@media only screen and (max-width: 1060px) {
+  .chart, .tooltip{
+    width: 100% !important;
+}
 }
